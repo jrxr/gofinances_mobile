@@ -7,6 +7,8 @@ import {
   getStatusBarHeight,
 } from "react-native-iphone-x-helper";
 
+import { DataListProps } from '.';
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
@@ -86,8 +88,8 @@ export const Title = styled.Text`
 `;
 
 export const TransactionList = styled(
-  FlatList as new () => FlatList<>
-).attrs({
+  FlatList as new () => FlatList<DataListProps>
+  ).attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
     paddingBottom: getBottomSpace(),
