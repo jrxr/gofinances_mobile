@@ -200,7 +200,7 @@ export function Dashboard() {
               type="down"
             />
             <HighlightCard
-              title="Entradas"
+              title="Total"
               amount={highlightData.total.amount}
               lastTransaction={highlightData.total.lastTransaction}
               type="total"
