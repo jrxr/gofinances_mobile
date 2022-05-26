@@ -72,10 +72,12 @@ export function Register() {
       return Alert.alert("Selecione a categoria!");
 
     const newTransaction = {
+      id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
       transactionType,
       category: category.key,
+      date: new Date(),
     };
 
     try {
@@ -85,6 +87,12 @@ export function Register() {
       const dataFormatted = [...currentData, newTransaction];
 
       await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
+
+      reset();
+      setTransactionType("");
+      setCategory({ key: "category", name: "Categoria" });
+
+      navigation.navigate("Listagem");
     } catch (error) {
       console.log(error);
       Alert.alert("Erro ao registrar transação!");
