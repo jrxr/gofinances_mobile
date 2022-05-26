@@ -48,7 +48,6 @@ export function Dashboard() {
     {} as HighlightData
   );
 
-
   function getLastTransactionDate(
     collection: DataListProps[],
     type: "positive" | "negative"

@@ -36,7 +36,7 @@ export const Category = styled(RectButton)<CategoryProps>`
   flex-direction: row;
   align-items: center;
   background-color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.secundary_light : theme.colors.background};
+    isActive ? theme.colors.secondary_light : theme.colors.background};
 `;
 
 export const Icon = styled(Feather)`
