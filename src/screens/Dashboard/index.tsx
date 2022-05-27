@@ -8,7 +8,7 @@ import {
   TransactionCard,
   TransactionCardProps,
 } from "../../components/TransactionCard";
-
+import { useAuth } from "../../hooks/auth";
 import {
   Container,
   Header,
@@ -47,6 +47,7 @@ export function Dashboard() {
   const [highlightData, setHighlightData] = useState<HighlightData>(
     {} as HighlightData
   );
+  const { signOut, user } = useAuth();
 
   function getLastTransactionDate(
     collection: DataListProps[],
@@ -73,7 +74,7 @@ export function Dashboard() {
   }
 
   async function loadTransactions() {
-    const dataKey = `@gofinances:transactions`;
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
     const response = await AsyncStorage.getItem(dataKey);
     const transactions = response ? JSON.parse(response) : [];
 
@@ -171,17 +172,17 @@ export function Dashboard() {
           <Header>
             <UserWrapper>
               <UserInfo>
-                {/* <Photo
+                <Photo
                   source={{
                     uri: user.photo,
                   }}
-                /> */}
+                />
                 <User>
                   <UserGreeting>Olá, </UserGreeting>
-                  <UserName>Júnior</UserName>
+                  <UserName>{user.name}</UserName>
                 </User>
               </UserInfo>
-              <LogoutButton>
+              <LogoutButton onPress={signOut}>
                 <Icon name="power" />
               </LogoutButton>
             </UserWrapper>
