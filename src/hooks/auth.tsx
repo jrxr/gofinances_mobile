@@ -11,8 +11,8 @@ import React, {
   useState,
 } from "react";
 
-const CLIENT_ID = '576867244573-i135qm4a743ts8o8p9juude8d6ml2mlo.apps.googleusercontent.com';
-const REDIRECT_URI = 'https://auth.expo.io/@jrxr/gofinances';
+const CLIENT_ID = process.env.CLIENT_ID;
+const REDIRECT_URI = process.env.REDIRECT_URI;
 
 interface AuthProviderProps {
   children: ReactNode;
